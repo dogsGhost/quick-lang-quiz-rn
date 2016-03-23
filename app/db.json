@@ -1,0 +1,418 @@
+{
+  "pronoun": [
+    {
+      "en": "I",
+      "es": "yo",
+      "fr": "je"
+    },
+    {
+      "en": "you (informal)",
+      "es": "tu",
+      "fr": "tu"
+    },
+    {
+      "en": "you (formal)",
+      "es": "usted",
+      "fr": "vous"
+    },
+    {
+      "en": "he",
+      "es": "el",
+      "fr": "il"
+    },
+    {
+      "en": "she",
+      "es": "ella",
+      "fr": "elle"
+    }
+  ],
+  "verb": [
+    {
+      "en": "am/are",
+      "es": {
+        "I": "soy",
+        "you (formal)": "es",
+        "you (informal)": "eres",
+        "he": "es",
+        "she": "es"
+      },
+      "fr": {
+        "I": "suis",
+        "you (formal)": "etes",
+        "you (informal)": "es",
+        "he": "est",
+        "she": "est"
+      }
+    },
+    {
+      "en": "eat(s)",
+      "es": {
+        "I": "como",
+        "you (formal)": "come",
+        "you (informal)": "comes",
+        "he": "come",
+        "she": "come"
+      },
+      "fr": {
+        "I": "mange",
+        "you (formal)": "mangez",
+        "you (informal)": "manges",
+        "he": "mange",
+        "she": "mange"
+      }
+    },
+    {
+      "en": "drink(s)",
+      "es": {
+        "I": "bebo",
+        "you (formal)": "bebe",
+        "you (informal)": "bebes",
+        "he": "bebe",
+        "she": "bebe"
+      },
+      "fr": {
+        "I": "bois",
+        "you (formal)": "buvez",
+        "you (informal)": "bois",
+        "he": "boit",
+        "she": "boit"
+      }
+    },
+    {
+      "en": "write(s)",
+      "es": {
+        "I": "escribo",
+        "you (formal)": "escribe",
+        "you (informal)": "escribes",
+        "he": "escribe",
+        "she": "escribe"
+      }
+    },
+    {
+      "en": "read(s)",
+      "es": {
+        "I": "leo",
+        "you (formal)": "lee",
+        "you (informal)": "lees",
+        "he": "lee",
+        "she": "lee"
+      }
+    },
+    {
+      "en": "see(s)",
+      "es": {
+        "I": "veo",
+        "you (formal)": "ve",
+        "you (informal)": "ves",
+        "he": "ve",
+        "she": "ve"
+      }
+    },
+    {
+      "en": "have/has",
+      "es": {
+        "I": "tengo",
+        "you (formal)": "tiene",
+        "you (informal)": "tienes",
+        "he": "tiene",
+        "she": "tiene"
+      }
+    },
+    {
+      "en": "want(s)",
+      "es": {
+        "I": "quiero",
+        "you (formal)": "quiere",
+        "you (informal)": "quieres",
+        "he": "quiere",
+        "she": "quiere"
+      }
+    },
+    {
+      "en": "pay(s)",
+      "es": {
+        "I": "pago",
+        "you (formal)": "paga",
+        "you (informal)": "pagas",
+        "he": "paga",
+        "she": "paga"
+      }
+    },
+    {
+      "en": "touch(es)",
+      "es": {
+        "I": "toco",
+        "you (formal)": "toca",
+        "you (informal)": "tocas",
+        "he": "toca",
+        "she": "toca"
+      }
+    },
+    {
+      "en": "make(s)",
+      "es": {
+        "I": "hago",
+        "you (formal)": "hace",
+        "you (informal)": "haces",
+        "he": "hace",
+        "she": "hace"
+      }
+    }
+  ],
+  "determiner": [
+    {
+      "en": "a",
+      "es": "un",
+      "fr": "un",
+      "gender": 1
+    },
+    {
+      "en": "a",
+      "es": "una",
+      "fr": "une",
+      "gender": 0
+    },
+    {
+      "en": "the",
+      "es": "el",
+      "fr": "le",
+      "gender": 1
+    },
+    {
+      "en": "the",
+      "es": "la",
+      "fr": "la",
+      "gender": 0
+    }
+  ],
+  "noun": [
+    {
+      "en": "bread",
+      "es": "pan",
+      "fr": "pain",
+      "gender": 1
+    },
+    {
+      "en": "water",
+      "es": "agua",
+      "fr": "eau",
+      "gender": 0
+    },
+    {
+      "en": "milk",
+      "es": "leche",
+      "fr": "lait",
+      "gender": 0
+    },
+    {
+      "en": "newspaper",
+      "es": "diario",
+      "fr": "journal",
+      "gender": 1
+    },
+    {
+      "en": "letter",
+      "es": "carta",
+      "fr": "lettre",
+      "gender": 0
+    },
+    {
+      "en": "book",
+      "es": "libro",
+      "fr": "livre",
+      "gender": 1
+    },
+    {
+      "en": "wine",
+      "es": "vino",
+      "fr": "vin",
+      "gender": 1
+    },
+    {
+      "en": "apple",
+      "es": "manzana",
+      "fr": "pomme",
+      "gender": 0
+    },
+    {
+      "en": "strawberry",
+      "es": "fresa",
+      "fr": "fraise",
+      "gender": 0
+    },
+    {
+      "en": "cheese",
+      "es": "queso",
+      "fr": "fromage",
+      "gender": 1
+    },
+    {
+      "en": "salt",
+      "es": "sal",
+      "fr": "sel",
+      "gender": 0
+    },
+    {
+      "en": "sandwich",
+      "es": "emparedado",
+      "fr": "sandwich",
+      "gender": 1
+    },
+    {
+      "en": "soup",
+      "es": "sopa",
+      "fr": "soupe",
+      "gender": 0
+    },
+    {
+      "en": "tomato",
+      "es": "tomate",
+      "fr": "tomate",
+      "gender": 1
+    },
+    {
+      "en": "boy",
+      "es": "nino",
+      "fr": "garcon",
+      "gender": 1
+    },
+    {
+      "en": "girl",
+      "es": "nina",
+      "fr": "fille",
+      "gender": 0
+    },
+    {
+      "en": "man",
+      "es": "hombre",
+      "fr": "homme",
+      "gender": 1
+    },
+    {
+      "en": "woman",
+      "es": "mujer",
+      "fr": "femme",
+      "gender": 0
+    },
+    {
+      "en": "person",
+      "es": "persona",
+      "gender": 0
+    },
+    {
+      "en": "lemon",
+      "es": "limon",
+      "gender": 1
+    },
+    {
+      "en": "rice",
+      "es": "arroz",
+      "gender": 1
+    },
+    {
+      "en": "egg",
+      "es": "huevo",
+      "gender": 1
+    },
+    {
+      "en": "orange",
+      "es": "naranja",
+      "gender": 0
+    },
+    {
+      "en": "fish",
+      "es": "pescado",
+      "gender": 1
+    },
+    {
+      "en": "chicken",
+      "es": "pollo",
+      "gender": 1
+    },
+    {
+      "en": "potato",
+      "es": "papa",
+      "gender": 0
+    },
+    {
+      "en": "juice",
+      "es": "jugo",
+      "gender": 1
+    },
+    {
+      "en": "sauce",
+      "es": "salsa",
+      "gender": 0
+    },
+    {
+      "en": "pasta",
+      "es": "pasta",
+      "gender": 0
+    },
+    {
+      "en": "fruit",
+      "es": "fruta",
+      "gender": 0
+    },
+    {
+      "en": "tea",
+      "es": "te",
+      "gender": 1
+    },
+    {
+      "en": "meat",
+      "es": "carne",
+      "gender": 0
+    },
+    {
+      "en": "turtle",
+      "es": "tortuga",
+      "gender": 0
+    },
+    {
+      "en": "horse",
+      "es": "caballo",
+      "gender": 1
+    },
+    {
+      "en": "dog",
+      "es": "perro",
+      "gender": 1
+    },
+    {
+      "en": "bear",
+      "es": "oso",
+      "gender": 1
+    },
+    {
+      "en": "bull",
+      "es": "toro",
+      "gender": 1
+    },
+    {
+      "en": "crab",
+      "es": "cangrejo",
+      "gender": 1
+    },
+    {
+      "en": "rabbit",
+      "es": "conejo",
+      "gender": 1
+    },
+    {
+      "en": "coat",
+      "es": "abrigo",
+      "gender": 1
+    },
+    {
+      "en": "skirt",
+      "es": "falda",
+      "gender": 0
+    },
+    {
+      "en": "shoe",
+      "es": "zapato",
+      "gender": 1
+    }
+  ]
+}
