@@ -1,11 +1,15 @@
 import React, {
   Component,
+  PropTypes,
   Text,
   TextInput,
   TouchableHighlight,
   View
 } from 'react-native';
+import Question from './Question';
 import getPhrases from './../phrases';
+
+const activeBtnColor = '#AE41C2';
 
 export default class Main extends Component {
   constructor() {
@@ -13,10 +17,10 @@ export default class Main extends Component {
     this.state = {
       count: '10', // default number of questions
       lang: 'es', // default language
-      quizStarted: false, // check for toggling UI elements
-      curListIndex: 0,
-      answers: []
+      quizStarted: false // check for toggling UI elements
     };
+    // bind
+    this._handleNewQuiz = this._handleNewQuiz.bind(this);
   }
 
   // start a new quiz by simply toggling the view
@@ -32,10 +36,10 @@ export default class Main extends Component {
           this.state.quizStarted ?
             <Text>{this.state.count}</Text>:
             <TextInput
-              style={{height: 30, borderColor: '#ddd', borderWidth: 2}}
               keyboardType='numeric'
               maxLength={2}
               onChangeText={(count) => this.setState({ count })}
+              style={{height: 30, borderColor: '#ddd', borderWidth: 2}}
               value={this.state.count}
             />
         }
@@ -45,12 +49,27 @@ export default class Main extends Component {
         </Text>
         {
           this.state.quizStarted ?
-            <Text>list</Text> :
-            <TouchableHighlight>
-              <Text>Start</Text>
+            <Question
+              questions={getPhrases({
+                lang: this.state.lang,
+                count: Math.floor(Number(this.state.count)),
+                src: this.props.src
+              })}
+              onNewQuiz={this._handleNewQuiz}
+            /> :
+            <TouchableHighlight
+              onPress={() => this.setState({ quizStarted: true })}
+              style={styles.btn}
+              underlayColor={activeBtnColor}
+            >
+              <Text style={styles.btnText}>START</Text>
             </TouchableHighlight>
         }
       </View>
     );
   }
 }
+
+Main.propTypes = {
+  src: PropTypes.object.isRequired
+};

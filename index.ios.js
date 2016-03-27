@@ -6,14 +6,13 @@ import React, {
   View
 } from 'react-native';
 import App from './app/components/App';
-// import styles from './app/styles/main';
-
-const C = React.createElement;
+import styles from './app/styles/styles';
 
 class SpanishQuiz extends Component {
   render() {
-    return C(App);
+    return React.createElement(App);
   }
 }
+
 
 AppRegistry.registerComponent('SpanishQuiz', () => SpanishQuiz);
