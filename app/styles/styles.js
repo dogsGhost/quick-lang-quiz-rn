@@ -13,13 +13,10 @@ export default styles = StyleSheet.create({
     flexDirection: 'column'
   },
 
-  mainHeader: {
+  mainHeading: {
     backgroundColor: black,
     paddingTop: em(2),
-    paddingBottom: em(1.25)
-  },
-
-  mainHeading: {
+    paddingBottom: em(1.25),
     color: white,
     fontSize: em(1.5),
     lineHeight: em(1.5),
@@ -60,5 +57,15 @@ export default styles = StyleSheet.create({
   },
   quizNumber: {},
 
-  quizText: {}
+  quizText: {},
+
+  correct: {
+    backgroundColor: "#8ef1b7",
+    borderTopColor: "#26A65B"
+  },
+
+  incorrect: {
+    backgroundColor: "#fad1d0",
+    borderTopColor: "#D64541"
+  },
 });
