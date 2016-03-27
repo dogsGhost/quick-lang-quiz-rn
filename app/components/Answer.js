@@ -9,15 +9,15 @@ export default Answer = (props) => {
 
   return (
     <View style={[styles.answerItem, itemStyle]}>
-        <Text style={styles.answerLine}>
-          Phrase {props.index + 1 + ''}: {props.srcItem.english}
+        <Text style={[styles.answerLine, styles.answerPhrase]}>
+          <Text style={{ fontStyle: 'italic' }}>Phrase {props.index + 1 + ''}:</Text> {props.srcItem.english}
         </Text>
         <Text style={styles.answerLine}>
-          You answered: {props.answer.inputValue}
+          <Text style={{ fontStyle: 'normal' }}>Your answer</Text>: {props.answer.inputValue}
         </Text>
         {
           !props.answer.isCorrect ?
-            <Text style={styles.answerLine}>
+            <Text style={[styles.answerLine, { fontWeight: 'bold' }]}>
               Correct answer: {props.srcItem.translation}
             </Text> :
             false

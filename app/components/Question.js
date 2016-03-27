@@ -10,7 +10,8 @@ import Answer from './Answer';
 import utils from '../utils';
 
 const PERCENT_MULTIPLE = 100;
-const activeBtnColor = '#AE41C2';
+const activeBtnColor = '#FF7070';
+
 // Calculate how many of the answer are correct.
 const getNumCorrect = (arr) => {
   return arr.filter(answer => answer.isCorrect).length;
@@ -83,10 +84,10 @@ export default class Question extends Component {
       return (
         <View>
           <Text style={styles.quizScore}>
-            You scored {percentage}% ({numCorrect} out of {dataLen}).
+            You scored {percentage}% ({numCorrect} out of {dataLen})
           </Text>
           <TouchableHighlight
-            style={styles.btn}
+            style={[styles.btn, styles.btnStart]}
             onPress={this.props.onNewQuiz}
           >
             <Text style={styles.btnText}>NEW QUIZ</Text>
@@ -99,11 +100,12 @@ export default class Question extends Component {
     }
 
     return (
-      <View>
-        <View style={styles.progressContainer}>
-          <View style={[styles.progressBar1, progressWidth1]}></View>
-          <View style={[styles.progressBar2, progressWidth2]}></View>
-        </View>
+    <View>
+      <View style={styles.progressContainer}>
+        <View style={[styles.progressBar1, progressWidth1]}></View>
+        <View style={[styles.progressBar2, progressWidth2]}></View>
+      </View>
+      <View style={styles.quizContainer}>
         <Text style={styles.quizNumber}>
           {this.state.curIndex + 1 + ''}
         </Text>
@@ -112,7 +114,7 @@ export default class Question extends Component {
         </Text>
         <TextInput
           onChangeText={(curAnswer) => this.setState({ curAnswer })}
-          style={{height: 30, borderColor: '#ddd', borderWidth: 2}}
+          style={styles.quizInput}
           value={this.state.curAnswer}
         />
         <TouchableHighlight
@@ -125,6 +127,7 @@ export default class Question extends Component {
           </Text>
         </TouchableHighlight>
       </View>
+    </View>
     );
   }
 }

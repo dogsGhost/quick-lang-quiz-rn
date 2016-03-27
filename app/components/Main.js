@@ -9,7 +9,7 @@ import React, {
 import Question from './Question';
 import getPhrases from './../phrases';
 
-const activeBtnColor = '#AE41C2';
+const activeBtnColor = '#FF7070';
 
 export default class Main extends Component {
   constructor() {
@@ -31,22 +31,23 @@ export default class Main extends Component {
   render() {
     return (
       <View>
-        <Text>Translate </Text>
-        {
-          this.state.quizStarted ?
-            <Text>{this.state.count}</Text>:
-            <TextInput
-              keyboardType='numeric'
-              maxLength={2}
-              onChangeText={(count) => this.setState({ count })}
-              style={{height: 30, borderColor: '#ddd', borderWidth: 2}}
-              value={this.state.count}
-            />
-        }
-        <Text> phrases from English to Spanish.
-         Do not use character accents.
-         Dropped pronouns are optional.
-        </Text>
+        <View style={styles.instructions}>
+          <Text style={styles.p}>Translate </Text>
+          {
+            this.state.quizStarted ?
+              <Text style={styles.p}>{this.state.count}</Text>:
+              <TextInput
+                keyboardType='numeric'
+                maxLength={2}
+                onChangeText={(count) => this.setState({ count })}
+                style={styles.instructionsCount}
+                value={this.state.count}
+              />
+          }
+          <Text style={styles.p}> phrases from English to</Text>
+          <Text style={styles.p}>Spanish. Do not use character accents.</Text>
+          <Text style={styles.p}>Dropped pronouns are optional.</Text>
+        </View>
         {
           this.state.quizStarted ?
             <Question
@@ -59,7 +60,7 @@ export default class Main extends Component {
             /> :
             <TouchableHighlight
               onPress={() => this.setState({ quizStarted: true })}
-              style={styles.btn}
+              style={[styles.btn, styles.btnStart]}
               underlayColor={activeBtnColor}
             >
               <Text style={styles.btnText}>START</Text>
