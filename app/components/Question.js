@@ -3,33 +3,26 @@ import React, {
   PropTypes,
   Text,
   TextInput,
-  TouchableHighlight,
   View
 } from 'react-native';
-import Answer from './Answer';
+import ResultsView from './ResultsView';
+import Button from './Button';
 import utils from '../utils';
 
-const PERCENT_MULTIPLE = 100;
-const activeBtnColor = '#FF7070';
-
-// Calculate how many of the answer are correct.
-const getNumCorrect = (arr) => {
-  return arr.filter(answer => answer.isCorrect).length;
-};
-
 export default class Question extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       curIndex: 0,
       answers: [],
       curAnswer: ''
     };
+
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
   // show the next phrase
   _handleSubmit() {
-    console.log('Component | Question | _handleSubmit');
     let inputValue = utils.clean(this.state.curAnswer);
     let correctAnswer = this.props.questions[this.state.curIndex].translation;
 
@@ -43,7 +36,11 @@ export default class Question extends Component {
         isCorrect = inputValue === correctAnswer ? true : false;
       }
 
-      let answerObj = { inputValue, isCorrect };
+      let answerObj = {
+        inputValue,
+        isCorrect,
+        srcItem: this.props.questions[this.state.curIndex]
+      };
       // we will update answer array clear input field
       let newState = {
         answers: this.state.answers.concat([answerObj]),
@@ -63,39 +60,16 @@ export default class Question extends Component {
     let i = this.state.curIndex;
     let data = this.props.questions;
     let dataLen = data.length;
-    let progressWidth1 = {
-      flex: i / dataLen
-    };
-    let progressWidth2 = {
-      flex: 1 - progressWidth1.flex
-    };
+    let progressWidth1 = { flex: i / dataLen };
+    let progressWidth2 = { flex: 1 - progressWidth1.flex };
 
     // If the last question has been answered.
     if (i === dataLen) {
-      let numCorrect = getNumCorrect(this.state.answers);
-      let percentage = Math.round(numCorrect / dataLen * PERCENT_MULTIPLE);
-      let answerNodes = this.state.answers.map((answer, index) => {
-        let item = data[index];
-        return (
-          <Answer key={index} answer={answer} srcItem={item} index={index} />
-        );
-      });
-
       return (
-        <View>
-          <Text style={styles.quizScore}>
-            You scored {percentage}% ({numCorrect} out of {dataLen})
-          </Text>
-          <TouchableHighlight
-            style={[styles.btn, styles.btnStart]}
-            onPress={this.props.onNewQuiz}
-          >
-            <Text style={styles.btnText}>NEW QUIZ</Text>
-          </TouchableHighlight>
-          <View>
-            {answerNodes}
-          </View>
-        </View>
+        <ResultsView
+          answers={this.state.answers}
+          onNewQuiz={this.props.onNewQuiz}
+        />
       );
     }
 
@@ -110,22 +84,16 @@ export default class Question extends Component {
           {this.state.curIndex + 1 + ''}
         </Text>
         <Text style={styles.quizText}>
-          {utils.capitalize(data[this.state.curIndex].english)}.
+          {utils.capitalize(data[i].english)}.
         </Text>
         <TextInput
           onChangeText={(curAnswer) => this.setState({ curAnswer })}
           style={styles.quizInput}
           value={this.state.curAnswer}
         />
-        <TouchableHighlight
-          onPress={() => this._handleSubmit()}
-          style={styles.btn}
-          underlayColor={activeBtnColor}
-        >
-          <Text style={styles.btnText}>
-            {i === dataLen - 1 ? 'DONE' : 'NEXT'}
-          </Text>
-        </TouchableHighlight>
+        <Button clickHandler={this._handleSubmit}>
+          {i === dataLen - 1 ? 'DONE' : 'NEXT'}
+        </Button>
       </View>
     </View>
     );
@@ -133,6 +101,6 @@ export default class Question extends Component {
 }
 
 Question.propTypes = {
-  questions: PropTypes.array.isRequired,
-  onNewQuiz: PropTypes.func.isRequired
+  onNewQuiz: PropTypes.func.isRequired,
+  questions: PropTypes.array.isRequired
 };
