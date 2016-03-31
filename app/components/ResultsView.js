@@ -1,10 +1,10 @@
 import React, {
   PropTypes,
   Text,
-  TouchableHighlight,
   View
 } from 'react-native';
 import Result from './Result';
+import Button from './Button';
 import utils from '../utils';
 
 export default ResultsView = (props) => {
@@ -24,14 +24,14 @@ export default ResultsView = (props) => {
   return (
     <View>
       <Text style={styles.quizScore}>
-        You scored {percentage}% ({numCorrect} out of {dataLen})
+        <Text style={{ fontWeight: 'bold' }}>You scored {percentage}%</Text> ({numCorrect} out of {dataLen})
       </Text>
-      <TouchableHighlight
-        style={[styles.btn, styles.btnStart]}
-        onPress={props.onNewQuiz}
+      <Button
+        clickHandler={props.onNewQuiz}
+        btnStyles={styles.btnStart}
       >
-        <Text style={styles.btnText}>NEW QUIZ</Text>
-      </TouchableHighlight>
+        NEW QUIZ
+      </Button>
       <View>
         {answerNodes}
       </View>

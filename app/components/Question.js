@@ -3,13 +3,11 @@ import React, {
   PropTypes,
   Text,
   TextInput,
-  TouchableHighlight,
   View
 } from 'react-native';
 import ResultsView from './ResultsView';
+import Button from './Button';
 import utils from '../utils';
-
-const activeBtnColor = '#FF7070';
 
 export default class Question extends Component {
   constructor(props) {
@@ -19,6 +17,8 @@ export default class Question extends Component {
       answers: [],
       curAnswer: ''
     };
+
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
   // show the next phrase
@@ -91,15 +91,9 @@ export default class Question extends Component {
           style={styles.quizInput}
           value={this.state.curAnswer}
         />
-        <TouchableHighlight
-          onPress={() => this._handleSubmit()}
-          style={styles.btn}
-          underlayColor={activeBtnColor}
-        >
-          <Text style={styles.btnText}>
-            {i === dataLen - 1 ? 'DONE' : 'NEXT'}
-          </Text>
-        </TouchableHighlight>
+        <Button clickHandler={this._handleSubmit}>
+          {i === dataLen - 1 ? 'DONE' : 'NEXT'}
+        </Button>
       </View>
     </View>
     );

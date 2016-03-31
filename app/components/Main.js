@@ -2,14 +2,12 @@ import React, {
   Component,
   Text,
   TextInput,
-  TouchableHighlight,
   View
 } from 'react-native';
 import Question from './Question';
+import Button from './Button';
 import getPhrases from './../phrases';
 import db from './../db';
-
-const activeBtnColor = '#FF7070';
 
 export default class Main extends Component {
   constructor() {
@@ -69,13 +67,12 @@ export default class Main extends Component {
               questions={this.state.questions}
               onNewQuiz={this._handleNewQuiz}
             /> :
-            <TouchableHighlight
-              onPress={() => this._handleStartQuiz()}
-              style={[styles.btn, styles.btnStart]}
-              underlayColor={activeBtnColor}
+            <Button
+              btnStyles={styles.btnStart}
+              clickHandler={this._handleStartQuiz}
             >
-              <Text style={styles.btnText}>START</Text>
-            </TouchableHighlight>
+              START
+            </Button>
         }
       </View>
     );
