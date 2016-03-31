@@ -1,6 +1,5 @@
 import React, {
   Component,
-  PropTypes,
   Text,
   TextInput,
   TouchableHighlight,
@@ -8,6 +7,7 @@ import React, {
 } from 'react-native';
 import Question from './Question';
 import getPhrases from './../phrases';
+import db from './../db';
 
 const activeBtnColor = '#FF7070';
 
@@ -17,24 +17,39 @@ export default class Main extends Component {
     this.state = {
       count: '10', // default number of questions
       lang: 'es', // default language
-      quizStarted: false // check for toggling UI elements
+
+      questions: [] // start with no questions
     };
-    // bind
+
+    // scope our functions to the class
     this._handleNewQuiz = this._handleNewQuiz.bind(this);
+    this._handleStartQuiz = this._handleStartQuiz.bind(this);
   }
 
-  // start a new quiz by simply toggling the view
+  // start a new quiz by resetting the state
   _handleNewQuiz() {
-    this.setState({ quizStarted: false });
+    this.setState({ questions: [] });
+  }
+
+  _handleStartQuiz() {
+    // generate an array of questions for the quiz
+    let questions = getPhrases({
+      lang: this.state.lang,
+      count: Math.floor(Number(this.state.count)),
+      src: db
+    });
+    // set questions to state, triggering start of quiz
+    this.setState({ questions });
   }
 
   render() {
+    let len = this.state.questions.length;
     return (
       <View>
         <View style={styles.instructions}>
           <Text style={styles.p}>Translate </Text>
           {
-            this.state.quizStarted ?
+            len ?
               <Text style={styles.p}>{this.state.count}</Text>:
               <TextInput
                 keyboardType='numeric'
@@ -49,17 +64,13 @@ export default class Main extends Component {
           <Text style={styles.p}>Dropped pronouns are optional.</Text>
         </View>
         {
-          this.state.quizStarted ?
+          len ?
             <Question
-              questions={getPhrases({
-                lang: this.state.lang,
-                count: Math.floor(Number(this.state.count)),
-                src: this.props.src
-              })}
+              questions={this.state.questions}
               onNewQuiz={this._handleNewQuiz}
             /> :
             <TouchableHighlight
-              onPress={() => this.setState({ quizStarted: true })}
+              onPress={() => this._handleStartQuiz()}
               style={[styles.btn, styles.btnStart]}
               underlayColor={activeBtnColor}
             >
@@ -70,7 +81,3 @@ export default class Main extends Component {
     );
   }
 }
-
-Main.propTypes = {
-  src: PropTypes.object.isRequired
-};
